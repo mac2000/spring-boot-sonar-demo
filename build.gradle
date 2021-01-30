@@ -1,12 +1,16 @@
 plugins {
+	id "jacoco"
 	id 'org.springframework.boot' version '2.4.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "org.sonarqube" version "3.0"
 	id 'java'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+apply plugin: 'jacoco'
 
 repositories {
 	mavenCentral()
@@ -20,4 +24,20 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+	reports {
+		xml.enabled true
+	}
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectKey", "mac2000_spring-boot-sonar-demo"
+		property "sonar.organization", "mac2000-github"
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
 }
