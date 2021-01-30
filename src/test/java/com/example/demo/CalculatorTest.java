@@ -18,4 +18,9 @@ class CalculatorTest {
     void shouldAdd() {
         assertThat(calculator.add(2, 2)).isEqualTo(4);
     }
+
+    @Test
+    void shouldSub() {
+        assertThat(calculator.sub(4, 2)).isEqualTo(2);
+    }
 }
