@@ -15,6 +15,6 @@ class CalculatorTest {
 
     @Test
     void shouldAdd() {
-        assertThat(calculator.add(2, 2)).isEqualTo(4);
+        assertThat(calculator.add(2, 2)).isEqualTo(5);
     }
 }
